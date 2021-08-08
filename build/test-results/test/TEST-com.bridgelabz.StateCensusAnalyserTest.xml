@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.StateCensusAnalyserTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-08-08T18:29:06" hostname="DESKTOP-M71IR21" time="0.356">
+<testsuite name="com.bridgelabz.StateCensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-08T18:50:27" hostname="DESKTOP-M71IR21" time="0.035">
   <properties/>
-  <testcase name="given_IndiaCensusData_CsvFile_ShouldThrowException" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.008"/>
-  <testcase name="given_IndiaCensusData_WithWrongFile_ShoulThrewException" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.256"/>
-  <testcase name="given_IndiaCensusData_WithWrongDelimeter_ShoulThrowException" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.066"/>
-  <testcase name="givenCensusCsvFile_returnCorrectRecords" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.023"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="givenCensusCsvFile_ReturnCorrectRecords" classname="com.bridgelabz.StateCensusAnalyserTest" time="0.035"/>
+  <system-out><![CDATA[Number of Entries in File 30
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
