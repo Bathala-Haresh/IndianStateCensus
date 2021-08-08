@@ -1,10 +1,12 @@
 package com.bridgelabz;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
@@ -12,8 +14,7 @@ public class StateCensusAnalyser {
 
     public String csvPath;
 
-    public StateCensusAnalyser() {
-    }
+    public StateCensusAnalyser() {}
 
     public static int LoadIndiaCensusData(String csvPath) throws IOException, CensusAnalyserException   {
 
@@ -36,13 +37,31 @@ public class StateCensusAnalyser {
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.Csv_File_Problem);
+        }catch (IllegalStateException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExceptionType. Unable_To_Parse);
         }
     }
 
-    public static void main(String[] args) throws IOException, CensusAnalyserException {
 
-        String csvPath = "O:\\IntellijProjects\\IndianStateCenesusData\\Data\\IndiaStateCensusData.csv";
-        LoadIndiaCensusData(csvPath);
+    @SuppressWarnings("deprecation")
+    public boolean LoadIndiaCensusCSVData(String csvPath) throws CensusAnalyserException, IOException {
 
+        CSVReader reader;
+        try {
+            reader = new CSVReader(new FileReader(csvPath),'|');
+            @SuppressWarnings("unused")
+            String [] nextLine;
+            while((nextLine=reader.readNext()) != null) {
+                return true;
+            }
+            if(reader != null) {
+                reader.close();
+            }
+        }catch(IllegalStateException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExceptionType. Unable_To_Parse);
+        }
+        return false;
     }
 }
